@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hariyali Agrilife — Buy Earthworms & Vermicompost</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;max-width:980px;margin:18px auto;padding:8px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    h1{margin:0}
+    .hero{background:#f1f9f1;padding:14px;border-radius:8px;margin-bottom:14px}
+    .product{border:1px solid #e6e6e6;padding:12px;border-radius:8px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+    .cart{position:fixed;right:18px;bottom:18px;background:white;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.08);min-width:260px}
+    button{background:#2b8a3e;color:white;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
+    input[type="number"]{width:100px;padding:6px;border-radius:6px;border:1px solid #ddd}
+    label{font-size:0.95rem}
+    footer{margin-top:36px;color:#666;font-size:0.9rem;text-align:center}
+    .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .embed {margin-top:10px}
+    @media(max-width:720px){ .cart{position:static;margin-top:14px;width:100%} }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Hariyali Agrilife</h1>
+      <div style="color:#666">Eisenia fetida • Vermicompost • Training</div>
+    </div>
+    <div>
+      <small>Pay via UPI (Razorpay)</small>
+    </div>
+  </header>
+
+  <!-- HERO / Welcome in Hindi -->
+  <section class="hero">
+    <h2>देश को ज़हर मुक्त बनाने के लिए हमसे जुड़ें</h2>
+    <p>हमसे सीखें जहरमुक्त खेती करना, वर्मीकंपोस्टिंग और जैविक खेती के आदर्श तरीके। Hariyali Agrilife के साथ स्वच्छ और सुरक्षित खेती की शुरुआत करें।</p>
+  </section>
+
+  <main>
+    <section>
+      <h2>Products</h2>
+
+      <div class="product">
+        <div>
+          <strong>Earthworms — Eisenia fetida (for vermicomposting)</strong>
+          <div style="color:#666">₹200 / kg. <strong>50% off</strong> if you purchase more than 100 kg.</div>
+        </div>
+        <div>
+          <label>Qty (kg)</label><br>
+          <input type="number" min="0" step="1" id="qty-earthworm" value="0">
+        </div>
+      </div>
+
+      <div class="product">
+        <div>
+          <strong>Vermicomposting Training (1 day, offline)</strong>
+          <div style="color:#666">₹1000 / head</div>
+        </div>
+        <div>
+          <label>Seats</label><br>
+          <input type="number" min="0" step="1" id="qty-training" value="0">
+        </div>
+      </div>
+
+      <div class="product">
+        <div>
+          <strong>High grade Vermicompost (bag)</strong>
+          <div style="color:#666">₹400 / bag</div>
+        </div>
+        <div>
+          <label>Qty (bags)</label><br>
+          <input type="number" min="0" step="1" id="qty-compost" value="0">
+        </div>
+      </div>
+
+      <div style="margin-top:8px">
+        <label>Your name</label><br>
+        <input id="buyer-name" placeholder="Full name" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ddd;margin-top:6px">
+      </div>
+      <div style="margin-top:8px">
+        <label>Your phone (for WhatsApp)</label><br>
+        <input id="buyer-phone" placeholder="Example: 91XXXXXXXXXX" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ddd;margin-top:6px">
+      </div>
+      <div style="margin-top:8px">
+        <label>Delivery address (optional)</label><br>
+        <textarea id="buyer-address" rows="2" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ddd;margin-top:6px"></textarea>
+      </div>
+    </section>
+
+    <!-- Socials & Media -->
+    <section style="margin-top:18px">
+      <h2>हमारा मीडिया</h2>
+      <div class="socials">
+        <!-- YouTube: update VIDEO_ID and CHANNEL_URL below -->
+        <div style="flex:1;min-width:260px">
+          <strong>YouTube</strong>
+          <div class="embed">
+            <!-- Replace VIDEO_ID with a real YouTube video id -->
+            <iframe id="ytplayer" width="320" height="180" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div style="margin-top:6px"><a id="yt-channel" href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank">Visit our YouTube channel</a></div>
+        </div>
+
+        <!-- Instagram: update INSTAGRAM_POST_URL or profile link -->
+        <div style="flex:1;min-width:260px">
+          <strong>Instagram</strong>
+          <div class="embed" id="insta-embed">
+            <!-- Instagram embed: replace with an embed code for a specific post if you want -->
+            <p>Visit our Instagram: <a id="ig-link" href="https://www.instagram.com/YOUR_IG_USERNAME" target="_blank">@YOUR_IG_USERNAME</a></p>
+            <p>To embed posts, open the Instagram post in browser → Embed → copy paste the embed HTML here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="cart" id="cartBox" role="region" aria-label="Cart">
+    <strong>Cart</strong>
+    <div id="cartDetails" style="margin-top:8px;color:#333"></div>
+    <div style="margin-top:10px">
+      <button id="payBtn">Pay via UPI</button>
+    </div>
+    <div style="margin-top:8px;color:#777;font-size:0.9rem">After successful payment you will be taken to a page with WhatsApp to contact Hariyali Agrilife.</div>
+  </div>
+
+<script>
+/* Prices (INR) */
+const PRICES_RUPEES = { earthworm_per_kg:200, training_per_head:1000, compost_per_bag:400 };
+function rupeesToPaise(r){ return Math.round(r*100); }
+
+/* Elements */
+const qtyEarth = document.getElementById('qty-earthworm');
+const qtyTrain = document.getElementById('qty-training');
+const qtyComp  = document.getElementById('qty-compost');
+const cartDetails = document.getElementById('cartDetails');
+const payBtn = document.getElementById('payBtn');
+const nameEl = document.getElementById('buyer-name');
+const phoneEl = document.getElementById('buyer-phone');
+const addrEl = document.getElementById('buyer-address');
+
+/* Razorpay publishable key you provided */
+const RAZORPAY_KEY_ID = "rzp_test_RltniYpU3lS8bO";
+
+/* Render cart */
+function renderCart(){
+  const eQty = parseInt(qtyEarth.value||0,10);
+  const tQty = parseInt(qtyTrain.value||0,10);
+  const cQty = parseInt(qtyComp.value||0,10);
+
+  let earthUnit = PRICES_RUPEES.earthworm_per_kg;
+  if(eQty > 100) earthUnit = earthUnit * 0.5;
+  const earthTotalPaise = rupeesToPaise(earthUnit) * eQty;
+  const trainTotalPaise = rupeesToPaise(PRICES_RUPEES.training_per_head) * tQty;
+  const compTotalPaise = rupeesToPaise(PRICES_RUPEES.compost_per_bag) * cQty;
+  const totalPaise = earthTotalPaise + trainTotalPaise + compTotalPaise;
+
+  const toRupees = v => (v/100).toFixed(2);
+  let html = '';
+  if(eQty>0) html += `${eQty} kg Earthworms @ ₹${(earthUnit).toFixed(2)}/kg → ₹${toRupees(earthTotalPaise)}<br>`;
+  if(tQty>0) html += `${tQty} × Training @ ₹${(PRICES_RUPEES.training_per_head).toFixed(2)} → ₹${toRupees(trainTotalPaise)}<br>`;
+  if(cQty>0) html += `${cQty} × Compost @ ₹${(PRICES_RUPEES.compost_per_bag).toFixed(2)} → ₹${toRupees(compTotalPaise)}<br>`;
+  if(html==='') html = '<small>Cart is empty</small>';
+  html += `<div style="margin-top:6px"><strong>Total: ₹${toRupees(totalPaise)}</strong></div>`;
+  cartDetails.innerHTML = html;
+  cartDetails.dataset.totalPaise = totalPaise;
+  cartDetails.dataset.earthTotalPaise = earthTotalPaise;
+  cartDetails.dataset.trainTotalPaise = trainTotalPaise;
+  cartDetails.dataset.compTotalPaise = compTotalPaise;
+}
+qtyEarth.addEventListener('input', renderCart);
+qtyTrain.addEventListener('input', renderCart);
+qtyComp.addEventListener('input', renderCart);
+renderCart();
+
+/* Create order on server and open Razorpay checkout */
+payBtn.addEventListener('click', async () => {
+  const totalPaise = parseInt(cartDetails.dataset.totalPaise || 0, 10);
+  if(!totalPaise || totalPaise <= 0){ alert('Cart is empty. Please add items.'); return; }
+
+  const buyerName = nameEl.value.trim();
+  const buyerPhone = phoneEl.value.trim();
+  if(!buyerName || !buyerPhone){ if(!confirm('Name or phone is empty. Continue?')) return; }
+
+  const items = [];
+  if(parseInt(qtyEarth.value||0,10) > 0) items.push({ name:'Earthworms (kg)', qty: parseInt(qtyEarth.value,10) });
+  if(parseInt(qtyTrain.value||0,10) > 0) items.push({ name:'Training (head)', qty: parseInt(qtyTrain.value,10) });
+  if(parseInt(qtyComp.value||0,10) > 0) items.push({ name:'Vermicompost (bags)', qty: parseInt(qtyComp.value,10) });
+
+  try {
+    payBtn.disabled = true;
+    payBtn.textContent = 'Creating order…';
+    const res = await fetch('/.netlify/functions/create-order', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        amount: totalPaise,
+        currency: 'INR',
+        receipt: `har-${Date.now()}`,
+        buyer: { name: buyerName, phone: buyerPhone, address: addrEl.value || '' },
+        items
+      })
+    });
+    const j = await res.json();
+    if(!res.ok) throw new Error(j.error || 'Failed to create order');
+    const order = j.order;
+
+    const options = {
+      key: RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: "Hariyali Agrilife",
+      description: `Order ${order.id}`,
+      order_id: order.id,
+      prefill: { name: buyerName, contact: buyerPhone },
+      handler: function (response){
+        // After payment success, verify + send email by calling server
+        fetch('/.netlify/functions/verify-payment', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+            buyer: { name: buyerName, phone: buyerPhone, address: addrEl.value || '' },
+            items
+          })
+        }).then(()=> {
+          const params = new URLSearchParams({
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            buyer_name: buyerName,
+            buyer_phone: buyerPhone
+          });
+          window.location = '/success.html?' + params.toString();
+        }).catch(err=>{
+          console.error('verify failed', err);
+          alert('Payment succeeded but verification failed. Contact admin.');
+        });
+      },
+      modal:{escape:true}
+    };
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(resp){
+      alert('Payment failed: ' + (resp.error && resp.error.description));
+    });
+    rzp.open();
+  } catch(err){
+    console.error(err);
+    alert('Error: ' + err.message);
+  } finally {
+    payBtn.disabled = false;
+    payBtn.textContent = 'Pay via UPI';
+  }
+});
+</script>
+
+<footer>
+  <div>© <span id="year"></span> Hariyali Agrilife</div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</footer>
+</body>
+</html>

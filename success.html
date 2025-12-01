@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Payment success — Hariyali Agrilife</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;max-width:800px;margin:30px auto;padding:18px}
+    .box{border:1px solid #e6e6e6;padding:18px;border-radius:10px}
+    a.wh{display:inline-block;padding:10px 14px;background:#25D366;color:white;border-radius:8px;text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+  <h1>Thank you — Payment received!</h1>
+  <div class="box" id="info">
+    <p>We're processing your order. Please confirm details with us on WhatsApp.</p>
+    <div id="details"></div>
+    <div style="margin-top:12px">
+      <a id="whatsappBtn" class="wh" href="#" target="_blank">Message on WhatsApp</a>
+    </div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const paymentId = params.get('razorpay_payment_id') || '';
+  const orderId = params.get('razorpay_order_id') || '';
+  const name = params.get('buyer_name') || '';
+  const phone = params.get('buyer_phone') || '';
+
+  const details = document.getElementById('details');
+  details.innerHTML = `<strong>Order ID:</strong> ${orderId}<br><strong>Payment ID:</strong> ${paymentId}<br><strong>Name:</strong> ${name}<br><strong>Phone:</strong> ${phone}`;
+
+  const ownerNumber = '919685173368'; // your WhatsApp number without +
+  const message = encodeURIComponent(
+    `Hello Hariyali Agrilife,\nI have completed payment.\nOrder ID: ${orderId}\nPayment ID: ${paymentId}\nName: ${name}\nPhone: ${phone}\nPlease confirm my order.`
+  );
+  const waUrl = `https://wa.me/${ownerNumber}?text=${message}`;
+  document.getElementById('whatsappBtn').href = waUrl;
+</script>
+</body>
+</html>
